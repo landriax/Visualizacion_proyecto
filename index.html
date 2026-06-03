@@ -1,109 +1,410 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Visualización del Riesgo AML</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visualización del Riesgo de Blanqueo de Capitales</title>
+
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
-    h1, h2, h3 { color: #12355b; }
-    iframe { width: 100%; height: 650px; border: none; margin-bottom: 30px; }
-    .section { margin-bottom: 50px; }
+    :root {
+      --primary: #0b2c5f;
+      --secondary: #1f77b4;
+      --background: #f4f6f8;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #667085;
+      --border: #d9e2ec;
+      --accent: #e63946;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0b2c5f, #123f7a);
+      color: white;
+      padding: 70px 10%;
+    }
+
+    header h1 {
+      font-size: 2.7rem;
+      margin-bottom: 15px;
+      line-height: 1.2;
+    }
+
+    header p {
+      max-width: 900px;
+      font-size: 1.15rem;
+      color: #e4ecf7;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 10%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 24px;
+    }
+
+    section {
+      margin-bottom: 70px;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      border-left: 6px solid var(--secondary);
+      padding-left: 14px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      color: var(--primary);
+      margin-top: 35px;
+      font-size: 1.25rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+      margin-bottom: 25px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .summary-box {
+      background: white;
+      border-radius: 12px;
+      padding: 22px;
+      border-top: 5px solid var(--secondary);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .summary-box strong {
+      display: block;
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+
+    .summary-box span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 680px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+      margin-top: 16px;
+      margin-bottom: 35px;
+    }
+
+    .note {
+      background: #eef6ff;
+      border-left: 5px solid var(--secondary);
+      padding: 16px 20px;
+      border-radius: 8px;
+      color: #24415f;
+      margin: 20px 0;
+    }
+
+    ul {
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      background: #0b2c5f;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      margin-top: 60px;
+    }
+
+    .footer-muted {
+      color: #c8d6e5;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 45px 24px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        padding: 12px 24px;
+      }
+
+      iframe {
+        height: 520px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-<h1>Visualización del Riesgo de Blanqueo de Capitales (AML)</h1>
+<header>
+  <h1>Visualización del Riesgo de Blanqueo de Capitales</h1>
+  <p>
+    Proyecto de visualización interactiva orientado al análisis del riesgo AML a escala internacional,
+    integrando indicadores de corrupción, desarrollo económico, grupos de ingresos y distribución regional.
+  </p>
+</header>
 
-<p>
-Análisis visual del riesgo de blanqueo de capitales a nivel internacional mediante indicadores
-económicos, de corrupción, desarrollo e ingresos.
-</p>
+<nav>
+  <a href="#objetivo">Objetivo</a>
+  <a href="#datos">Datos</a>
+  <a href="#preguntas">Preguntas</a>
+  <a href="#visualizaciones">Visualizaciones</a>
+  <a href="#resultados">Resultados</a>
+  <a href="#conclusiones">Conclusiones</a>
+</nav>
 
-<h2>Descripción del proyecto</h2>
+<main>
 
-<p>
-Este proyecto analiza la distribución mundial del AML Score y su relación con variables como el
-PIB per cápita, el índice de percepción de la corrupción, el grupo de ingresos y la región geográfica.
-Las visualizaciones han sido generadas con Python y Plotly.
-</p>
+  <section id="objetivo">
+    <h2>Objetivo del proyecto</h2>
+    <div class="card">
+      <p>
+        El objetivo de este proyecto es analizar la distribución mundial del riesgo de blanqueo de
+        capitales, medido mediante el <strong>AML Score</strong>, y estudiar su relación con variables
+        económicas, institucionales y regionales.
+      </p>
+      <p>
+        La visualización busca facilitar la identificación de patrones globales, diferencias entre regiones
+        y posibles relaciones entre el riesgo AML, la corrupción percibida y el nivel de desarrollo económico.
+      </p>
+    </div>
 
-<h2>Preguntas analizadas</h2>
+    <div class="summary-grid">
+      <div class="summary-box">
+        <strong>2018</strong>
+        <span>Año principal de análisis por mayor disponibilidad de datos comparables.</span>
+      </div>
+      <div class="summary-box">
+        <strong>AML Score</strong>
+        <span>Variable principal para medir riesgo de blanqueo de capitales.</span>
+      </div>
+      <div class="summary-box">
+        <strong>Plotly</strong>
+        <span>Visualizaciones interactivas publicadas mediante GitHub Pages.</span>
+      </div>
+      <div class="summary-box">
+        <strong>PCA + K-Means</strong>
+        <span>Análisis multivariante para identificar perfiles de países.</span>
+      </div>
+    </div>
+  </section>
 
-<ul>
-  <li>¿Qué países presentan mayor riesgo AML?</li>
-  <li>¿Existen diferencias regionales en el riesgo de blanqueo de capitales?</li>
-  <li>¿Cómo se relaciona la corrupción con el AML Score?</li>
-  <li>¿Existe relación entre PIB per cápita y riesgo AML?</li>
-  <li>¿Los países con perfiles similares pueden agruparse mediante PCA y K-Means?</li>
-</ul>
+  <section id="datos">
+    <h2>Descripción de los datos</h2>
+    <div class="card">
+      <p>
+        El conjunto de datos combina información de riesgo AML con indicadores socioeconómicos,
+        de corrupción y de gobernanza. Las observaciones se organizan por país y año.
+      </p>
 
-<div class="section">
-  <h2>Distribución mundial del riesgo AML</h2>
-  <h3>Mapa mundial del AML Score</h3>
-  <iframe src="graficas/01_mapa_aml.html"></iframe>
-</div>
+      <ul>
+        <li><strong>AML Score:</strong> indicador del riesgo de blanqueo de capitales.</li>
+        <li><strong>CPI Score:</strong> índice de percepción de la corrupción.</li>
+        <li><strong>GDP per capita:</strong> PIB per cápita como aproximación al desarrollo económico.</li>
+        <li><strong>Income Group:</strong> clasificación de países según nivel de ingresos.</li>
+        <li><strong>Region Name:</strong> agrupación geográfica de los países.</li>
+        <li><strong>Internet Usage:</strong> indicador de digitalización.</li>
+      </ul>
 
-<div class="section">
-  <h2>Países con mayor riesgo</h2>
-  <h3>Top 20 países con mayor AML Score</h3>
-  <iframe src="graficas/02_top20.html"></iframe>
-</div>
+      <div class="note">
+        Durante el análisis se detectó que 2019 no contenía valores válidos de PIB per cápita,
+        por lo que se seleccionó 2018 como año de referencia para las comparaciones multivariantes.
+      </div>
+    </div>
+  </section>
 
-<div class="section">
-  <h2>Factores económicos e institucionales</h2>
+  <section id="preguntas">
+    <h2>Preguntas analizadas</h2>
+    <div class="card">
+      <ul>
+        <li>¿Qué países presentan los mayores niveles de riesgo AML?</li>
+        <li>¿Existen diferencias regionales significativas en el riesgo de blanqueo de capitales?</li>
+        <li>¿Cómo se relaciona la corrupción percibida con el riesgo AML?</li>
+        <li>¿Existe una relación entre el PIB per cápita y el riesgo AML?</li>
+        <li>¿Los países de mayor renta presentan menores niveles de riesgo?</li>
+        <li>¿Qué variables presentan mayor asociación con el AML Score?</li>
+        <li>¿Pueden identificarse perfiles de países mediante PCA y K-Means?</li>
+      </ul>
+    </div>
+  </section>
 
-  <h3>PIB per cápita frente al riesgo AML</h3>
-  <iframe src="graficas/03_gdp_vs_aml.html"></iframe>
+  <section id="visualizaciones">
+    <h2>Visualizaciones interactivas</h2>
 
-  <h3>Corrupción frente al riesgo AML</h3>
-  <iframe src="graficas/04_corrupcion.html"></iframe>
-</div>
+    <div class="card">
+      <h3>1. Distribución mundial del riesgo AML</h3>
+      <p>
+        El mapa coroplético permite observar la distribución geográfica del AML Score y detectar
+        regiones con mayor vulnerabilidad.
+      </p>
+      <iframe src="graficas/01_mapa_aml.html"></iframe>
 
-<div class="section">
-  <h2>Diferencias por grupos y regiones</h2>
+      <h3>2. Países con mayor riesgo AML</h3>
+      <p>
+        El ranking destaca los países con puntuaciones más elevadas, facilitando la identificación
+        de casos extremos.
+      </p>
+      <iframe src="graficas/02_top20.html"></iframe>
 
-  <h3>AML por grupo de ingresos</h3>
-  <iframe src="graficas/05_income.html"></iframe>
+      <h3>3. Relación entre PIB per cápita y riesgo AML</h3>
+      <p>
+        Este gráfico analiza si el desarrollo económico se asocia con menores niveles de riesgo AML.
+      </p>
+      <iframe src="graficas/11_gdp_vs_aml.html"></iframe>
 
-  <h3>AML por región</h3>
-  <iframe src="graficas/06_region.html"></iframe>
+      <h3>4. Relación entre corrupción y riesgo AML</h3>
+      <p>
+        La visualización permite evaluar la relación entre la calidad institucional, aproximada mediante
+        el CPI Score, y el AML Score.
+      </p>
+      <iframe src="graficas/10_corrupcion_vs_aml.html"></iframe>
 
-  <h3>Ranking regional del AML Score</h3>
-  <iframe src="graficas/14_Ranking_regional.html"></iframe>
-</div>
+      <h3>5. AML Score por grupo de ingresos</h3>
+      <p>
+        La comparación por grupos de renta permite estudiar diferencias entre países de renta alta,
+        media y baja.
+      </p>
+      <iframe src="graficas/05_income.html"></iframe>
 
-<div class="section">
-  <h2>Análisis multivariante</h2>
+      <h3>6. Distribución regional del AML Score</h3>
+      <p>
+        El análisis regional permite comparar la dispersión y los valores centrales del riesgo AML
+        entre regiones.
+      </p>
+      <iframe src="graficas/06_region.html"></iframe>
 
-  <h3>Matriz de correlaciones</h3>
-  <iframe src="graficas/08_correlaciones.html"></iframe>
+      <h3>7. Ranking regional del AML Score</h3>
+      <p>
+        Esta visualización resume el nivel medio de riesgo AML por región.
+      </p>
+      <iframe src="graficas/14_Ranking_regional.html"></iframe>
 
-  <h3>PCA y clustering de países</h3>
-  <iframe src="graficas/13_clusters.html"></iframe>
-</div>
+      <h3>8. Matriz de correlaciones</h3>
+      <p>
+        La matriz sintetiza las asociaciones entre las principales variables económicas,
+        institucionales y de riesgo.
+      </p>
+      <iframe src="graficas/08_correlaciones.html"></iframe>
 
-<h2>Conclusiones principales</h2>
+      <h3>9. Agrupación de países mediante PCA y K-Means</h3>
+      <p>
+        El análisis multivariante permite identificar grupos de países con perfiles similares en función
+        de variables económicas, institucionales y de riesgo AML.
+      </p>
+      <iframe src="graficas/13_clusters.html"></iframe>
+    </div>
+  </section>
 
-<ul>
-  <li>Los países con mayor corrupción tienden a presentar mayor riesgo AML.</li>
-  <li>El PIB per cápita muestra una relación negativa con el AML Score.</li>
-  <li>Europa Occidental presenta niveles de riesgo más bajos.</li>
-  <li>África Subsahariana concentra valores medios más elevados.</li>
-  <li>El PCA y K-Means permiten identificar perfiles diferenciados de países.</li>
-</ul>
+  <section id="resultados">
+    <h2>Resultados principales</h2>
+    <div class="card">
+      <ul>
+        <li>
+          Se observa una relación negativa moderada entre el CPI Score y el AML Score, lo que indica
+          que los países con mayor transparencia tienden a presentar menor riesgo AML.
+        </li>
+        <li>
+          El PIB per cápita también muestra una relación negativa con el riesgo AML, sugiriendo que
+          el desarrollo económico puede estar asociado con mejores sistemas de control financiero.
+        </li>
+        <li>
+          Los países de renta alta presentan niveles de riesgo generalmente menores que los países
+          de renta baja o media-baja.
+        </li>
+        <li>
+          A nivel regional, Europa Occidental presenta los valores más bajos, mientras que África
+          Subsahariana concentra niveles medios más elevados.
+        </li>
+        <li>
+          El análisis PCA y K-Means permite identificar perfiles diferenciados de países según sus
+          características económicas y de gobernanza.
+        </li>
+      </ul>
+    </div>
+  </section>
 
-<h2>Tecnologías utilizadas</h2>
+  <section id="conclusiones">
+    <h2>Conclusiones</h2>
+    <div class="card">
+      <p>
+        Las visualizaciones desarrolladas muestran que el riesgo de blanqueo de capitales no se distribuye
+        de forma homogénea a escala internacional. Existen patrones regionales claros y asociaciones
+        relevantes con variables institucionales y económicas.
+      </p>
+      <p>
+        En conjunto, los resultados sugieren que la calidad institucional, la transparencia y el nivel de
+        desarrollo económico desempeñan un papel importante en la explicación de la vulnerabilidad frente
+        al blanqueo de capitales.
+      </p>
+      <p>
+        La combinación de visualización interactiva, análisis de correlaciones y técnicas de agrupamiento
+        permite construir una narrativa clara y exploratoria sobre los factores asociados al riesgo AML.
+      </p>
+    </div>
+  </section>
 
-<ul>
-  <li>Python</li>
-  <li>Pandas</li>
-  <li>Plotly</li>
-  <li>Scikit-Learn</li>
-  <li>GitHub Pages</li>
-</ul>
+</main>
 
-<p><strong>Proyecto académico de Visualización de Datos · Luis Mora</strong></p>
+<footer>
+  <strong>Proyecto académico de Visualización de Datos</strong><br />
+  <span class="footer-muted">Victoria Mora · Python · Plotly · Scikit-Learn · GitHub Pages</span>
+</footer>
 
 </body>
 </html>
