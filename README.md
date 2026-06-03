@@ -79,6 +79,9 @@ La página web integra visualizaciones estáticas e interactivas desarrolladas e
 
 La visualización puede consultarse públicamente en:
 
+```
+https://landriax.github.io/Visualizacion_proyecto/
+```
 
 La página principal se encuentra en el archivo:
 
