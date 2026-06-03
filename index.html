@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualización del Riesgo de Blanqueo de Capitales</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f7f7f7;
+      color: #222;
+    }
+
+    h1 {
+      color: #0b2c5f;
+    }
+
+    h2 {
+      color: #0b2c5f;
+      margin-top: 35px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: #eef3f8;
+      padding: 18px;
+      border-radius: 10px;
+      border-left: 5px solid #0b2c5f;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #0b2c5f;
+      font-weight: bold;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>Visualización del Riesgo de Blanqueo de Capitales (AML)</h1>
+
+    <p>
+      Este proyecto analiza la distribución mundial del riesgo de blanqueo de capitales
+      y su relación con variables económicas, sociales y de gobernanza mediante
+      visualizaciones interactivas desarrolladas con Python y Plotly.
+    </p>
+
+    <h2>Preguntas analizadas</h2>
+
+    <ul>
+      <li>¿Qué países presentan los mayores niveles de riesgo AML?</li>
+      <li>¿Existen diferencias regionales significativas?</li>
+      <li>¿Cómo se relaciona la corrupción con el riesgo AML?</li>
+      <li>¿Existe relación entre PIB per cápita y riesgo AML?</li>
+      <li>¿Pueden identificarse grupos de países con perfiles similares?</li>
+    </ul>
+
+    <h2>Visualizaciones interactivas</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <a href="figuras/01_mapa_aml.html">01. Mapa mundial del riesgo AML</a>
+      </div>
+
+      <div class="card">
+        <a href="figuras/02_top20.html">02. Top 20 países con mayor AML Score</a>
+      </div>
+
+      <div class="card">
+        <a href="figuras/03_gdp_vs_aml.html">03. PIB per cápita frente al riesgo AML</a>
+      </div>
+
+      <div class="card">
+        <a href="figuras/04_corrupcion.html">04. Corrupción frente al riesgo AML</a>
+      </div>
+
+      <div class="card">
+        <a href="figuras/05_income.html">05. AML por grupo de ingresos</a>
+      </div>
+
+      <div class="card">
+        <a href="figuras/06_region.html">06. AML por región</a>
+      </div>
+
+      <div class="card">
+        <a href="figuras/08_correlaciones.html">07. Matriz de correlaciones</a>
+      </div>
+
+      <div class="card">
+        <a href="figuras/13_clusters.html">08. Clustering PCA + K-Means</a>
+      </div>
+
+      <div class="card">
+        <a href="figuras/14_Ranking_regional.html">09. Ranking regional AML</a>
+      </div>
+
+    </div>
+
+    <h2>Principales resultados</h2>
+
+    <ul>
+      <li>Existe una relación negativa moderada entre corrupción y riesgo AML.</li>
+      <li>Los países con mayor PIB per cápita tienden a presentar menor riesgo AML.</li>
+      <li>Europa Occidental presenta niveles de riesgo más bajos.</li>
+      <li>África Subsahariana presenta niveles medios de riesgo más elevados.</li>
+      <li>El análisis PCA y K-Means permite identificar perfiles diferenciados de países.</li>
+    </ul>
+
+    <h2>Tecnologías utilizadas</h2>
+
+    <ul>
+      <li>Python</li>
+      <li>Pandas</li>
+      <li>Plotly</li>
+      <li>Scikit-Learn</li>
+      <li>GitHub Pages</li>
+    </ul>
+
+    <footer>
+      Proyecto académico de Visualización de Datos · Victoria Mora
+    </footer>
+
+  </div>
+</body>
+</html>
