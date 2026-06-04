@@ -225,6 +225,10 @@
       box-shadow: 0 5px 18px rgba(0,0,0,0.05);
     }
 
+    .map-frame {
+      height: 600px;
+    }
+    
     .small-frame {
       height: 700px;
     }
@@ -459,7 +463,10 @@
       AML presenta una distribución desigual entre países y regiones.
     </p>
 
-    <iframe src="graficas/01_mapa_aml.html"></iframe>
+    <iframe
+    class="map-frame"
+    src="graficas/01_mapa_aml.html">
+    </iframe>
 
     <div class="takeaway">
       <strong>Lectura:</strong>
@@ -650,7 +657,10 @@
     El análisis PCA y K-Means permite identificar grupos de países con características similares. Sin embargo, resulta útil observar si estos perfiles presentan también una distribución geográfica reconocible.
     </p>
     
-    <iframe src="graficas/15_mapa_clusters.html"></iframe>
+    <iframe
+        class="map-frame"
+        src="graficas/13_mapa_clusters.html">
+    </iframe>
     
     <div class="takeaway">
     <strong>Lectura:</strong>
