@@ -71,7 +71,7 @@
       max-width: 930px;
       background: rgba(255,255,255,0.11);
       border: 1px solid rgba(255,255,255,0.22);
-      border-left: 6px solid #e63946;
+      border-left: 6px solid var(--accent);
       padding: 22px 26px;
       border-radius: 14px;
       font-size: 1.15rem;
@@ -172,14 +172,17 @@
       margin: 22px 0;
     }
 
-    .summary-grid {
+    .summary-grid,
+    .final-summary-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
       gap: 18px;
       margin-top: 28px;
+      margin-bottom: 35px;
     }
 
-    .summary-box {
+    .summary-box,
+    .final-summary-box {
       background: white;
       border-radius: 13px;
       padding: 23px;
@@ -197,6 +200,18 @@
     .summary-box span {
       color: var(--muted);
       font-size: 0.96rem;
+    }
+
+    .final-summary-box h4 {
+      margin-top: 0;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .final-summary-box p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #475467;
     }
 
     iframe {
@@ -243,6 +258,30 @@
       gap: 22px;
     }
 
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      margin-bottom: 35px;
+    }
+
+    .summary-table th {
+      background: var(--primary);
+      color: white;
+      padding: 14px;
+      text-align: left;
+    }
+
+    .summary-table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .summary-table tr:nth-child(even) {
+      background: #f8fbff;
+    }
+
     ul {
       padding-left: 24px;
     }
@@ -252,7 +291,7 @@
     }
 
     footer {
-      background: #0b2c5f;
+      background: var(--primary);
       color: white;
       text-align: center;
       padding: 34px;
@@ -281,6 +320,10 @@
         height: 560px;
       }
 
+      .small-frame {
+        height: 560px;
+      }
+
       .two-col {
         grid-template-columns: 1fr;
       }
@@ -296,8 +339,8 @@
   <h1>Corrupción, riqueza y riesgo de blanqueo de capitales</h1>
 
   <p>
-    Una historia visual para entender por qué algunos países son más vulnerables al riesgo AML.
-    El análisis contrasta tres explicaciones: la geografía, el desarrollo económico y la fortaleza institucional.
+    Una historia visual basada en datos para comprender qué factores parecen explicar las diferencias internacionales
+    en el riesgo de blanqueo de capitales.
   </p>
 
   <div class="hero-question">
@@ -315,322 +358,430 @@
   <a href="#instituciones">3. Instituciones</a>
   <a href="#contexto">4. Contexto</a>
   <a href="#sintesis">5. Síntesis</a>
+  <a href="#respuesta">Respuesta</a>
+  <a href="#limitaciones">Limitaciones</a>
   <a href="#conclusiones">Conclusiones</a>
 </nav>
 
 <main>
 
-  <section id="tesis">
-    <h2>La tesis del proyecto</h2>
+<section id="tesis">
+  <h2>La tesis del proyecto</h2>
 
-    <div class="card">
-      <p class="lead">
-        El riesgo de blanqueo de capitales no se distribuye al azar. Los datos sugieren que existe una
-        relación entre el riesgo AML, el nivel de desarrollo económico y la calidad institucional de los países.
-      </p>
+  <div class="card">
+    <p class="lead">
+      El blanqueo de capitales constituye uno de los principales desafíos para la integridad de los sistemas financieros modernos. Sin embargo, la vulnerabilidad frente a este fenómeno no se distribuye de forma homogénea entre los distintos países.
+    </p>
 
-      <div class="claim">
-        <strong>Tesis visual:</strong><br>
-        La riqueza reduce parte del riesgo, pero la fortaleza institucional —aproximada mediante la corrupción percibida—
-        parece ser una explicación más consistente de la vulnerabilidad frente al blanqueo de capitales.
-      </div>
+    <p>
+      Mientras algunas naciones presentan niveles relativamente bajos de riesgo, otras muestran puntuaciones AML considerablemente más elevadas. Este proyecto utiliza técnicas de visualización de datos para explorar qué factores podrían estar asociados a estas diferencias.
+    </p>
 
-      <p>
-        La página está organizada como un recorrido: primero se localiza el problema, después se contrasta
-        la hipótesis económica, se evalúa la hipótesis institucional y finalmente se sintetizan los perfiles de países.
-      </p>
+    <div class="claim">
+      <strong>Tesis visual:</strong><br>
+      La riqueza reduce parte del riesgo, pero la fortaleza institucional —aproximada mediante la corrupción percibida—
+      parece ser una explicación más consistente de la vulnerabilidad frente al blanqueo de capitales.
     </div>
 
-    <div class="summary-grid">
-      <div class="summary-box">
-        <strong>2018</strong>
-        <span>Año principal por disponibilidad de datos comparables.</span>
+    <p>
+      La página está organizada como un recorrido: primero se localiza el problema, después se contrasta
+      la hipótesis económica, se evalúa la hipótesis institucional y finalmente se sintetizan los perfiles de países.
+    </p>
+  </div>
+
+  <div class="summary-grid">
+    <div class="summary-box">
+      <strong>2018</strong>
+      <span>Año principal por disponibilidad de datos comparables.</span>
+    </div>
+    <div class="summary-box">
+      <strong>AML Score</strong>
+      <span>Variable que mide el riesgo de blanqueo de capitales.</span>
+    </div>
+    <div class="summary-box">
+      <strong>CPI Score</strong>
+      <span>Indicador utilizado como aproximación a corrupción y calidad institucional.</span>
+    </div>
+    <div class="summary-box">
+      <strong>13 piezas</strong>
+      <span>Visualizaciones integradas en una narrativa común.</span>
+    </div>
+  </div>
+</section>
+
+<section id="datos">
+  <h2>Datos y preparación</h2>
+
+  <div class="card">
+    <p>
+      El conjunto de datos combina el indicador AML Score con variables económicas, institucionales,
+      demográficas y regionales. La unidad de análisis es el país en un año concreto.
+    </p>
+
+    <div class="two-col">
+      <div>
+        <h3>Variables principales</h3>
+        <ul>
+          <li><strong>AML Score:</strong> riesgo de blanqueo de capitales.</li>
+          <li><strong>CPI Score:</strong> percepción de corrupción.</li>
+          <li><strong>GDP per capita:</strong> nivel de desarrollo económico.</li>
+          <li><strong>Income Group:</strong> grupo de renta.</li>
+          <li><strong>Region Name:</strong> región geográfica.</li>
+          <li><strong>Internet Usage:</strong> digitalización.</li>
+        </ul>
       </div>
-      <div class="summary-box">
-        <strong>AML Score</strong>
-        <span>Variable que mide el riesgo de blanqueo de capitales.</span>
-      </div>
-      <div class="summary-box">
-        <strong>CPI Score</strong>
-        <span>Indicador utilizado como aproximación a corrupción y calidad institucional.</span>
-      </div>
-      <div class="summary-box">
-        <strong>12 piezas</strong>
-        <span>Visualizaciones y tablas integradas en una narrativa común.</span>
+
+      <div>
+        <h3>Decisiones de análisis</h3>
+        <ul>
+          <li>Uso de variables comparables entre países.</li>
+          <li>Selección de 2018 como año de referencia.</li>
+          <li>Exclusión de variables sin disponibilidad suficiente.</li>
+          <li>Uso de PCA y K-Means como análisis exploratorio multivariante.</li>
+        </ul>
       </div>
     </div>
 
-  </section>
-
-  <section id="datos">
-    <h2>Datos y preparación</h2>
-
-    <div class="card">
-      <p>
-        El conjunto de datos combina el indicador AML Score con variables económicas, institucionales,
-        demográficas y regionales. La unidad de análisis es el país en un año concreto.
-      </p>
-
-      <div class="two-col">
-        <div>
-          <h3>Variables principales</h3>
-          <ul>
-            <li><strong>AML Score:</strong> riesgo de blanqueo de capitales.</li>
-            <li><strong>CPI Score:</strong> percepción de corrupción.</li>
-            <li><strong>GDP per capita:</strong> nivel de desarrollo económico.</li>
-            <li><strong>Income Group:</strong> grupo de renta.</li>
-            <li><strong>Region Name:</strong> región geográfica.</li>
-            <li><strong>Internet Usage:</strong> digitalización.</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3>Decisiones de análisis</h3>
-          <ul>
-            <li>Uso de variables comparables entre países.</li>
-            <li>Selección de 2018 como año de referencia.</li>
-            <li>Exclusión de variables sin disponibilidad suficiente.</li>
-            <li>Uso de PCA y K-Means como análisis exploratorio multivariante.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="warning">
-        <strong>Limitación relevante:</strong>
-        2019 no contenía valores válidos para PIB per cápita, por lo que el análisis comparativo se centra en 2018.
-      </div>
+    <div class="warning">
+      <strong>Limitación relevante:</strong>
+      2019 no contenía valores válidos para PIB per cápita, por lo que el análisis comparativo se centra en 2018.
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="geografia">
-    <span class="chapter-label">Capítulo 1</span>
-    <h2>El riesgo AML tiene una geografía</h2>
+<section id="geografia">
+  <span class="chapter-label">Capítulo 1</span>
+  <h2>El riesgo AML tiene una geografía</h2>
 
-    <div class="card">
-      <p>
-        La primera pregunta no es todavía por qué ocurre, sino dónde ocurre. El mapa muestra que el riesgo
-        AML presenta una distribución desigual entre países y regiones.
-      </p>
+  <div class="card">
+    <p>
+      La primera pregunta no es todavía por qué ocurre, sino dónde ocurre. El mapa muestra que el riesgo
+      AML presenta una distribución desigual entre países y regiones.
+    </p>
 
-      <iframe src="graficas/01_mapa_aml.html"></iframe>
+    <iframe src="graficas/01_mapa_aml.html"></iframe>
 
-      <div class="takeaway">
-        <strong>Lectura:</strong>
-        el mapa introduce el problema: el riesgo AML no es homogéneo y se concentra en determinados contextos.
-      </div>
+    <div class="takeaway">
+      <strong>Lectura:</strong>
+      el mapa introduce el problema: el riesgo AML no es homogéneo y se concentra en determinados contextos.
+    </div>
 
-      <p>
-        Para pasar del patrón global a casos concretos, el ranking identifica los países con mayor AML Score.
-        El degradado de color refuerza visualmente la intensidad relativa del riesgo.
-      </p>
+    <p>
+      Para pasar del patrón global a casos concretos, el ranking identifica los países con mayor AML Score.
+      El degradado de color refuerza visualmente la intensidad relativa del riesgo.
+    </p>
 
-      <iframe src="graficas/02_top20.html"></iframe>
+    <iframe src="graficas/02_top20.html"></iframe>
 
-      <div class="takeaway">
-        <strong>Lectura:</strong>
-        el ranking evita que el análisis sea abstracto: muestra qué países encabezan la vulnerabilidad AML.
-      </div>
+    <div class="takeaway">
+      <strong>Lectura:</strong>
+      el ranking evita que el análisis sea abstracto: muestra qué países encabezan la vulnerabilidad AML.
+    </div>
 
-      <p>
-        La agregación regional resume la dimensión territorial del fenómeno y permite comparar regiones de forma directa.
-      </p>
+    <p>
+      La agregación regional resume la dimensión territorial del fenómeno y permite comparar regiones de forma directa.
+    </p>
 
-      <iframe src="graficas/14_Ranking_regional.html"></iframe>
+    <iframe src="graficas/14_Ranking_regional.html"></iframe>
 
-      <div class="takeaway">
-        <strong>Lectura:</strong>
-        las diferencias regionales sugieren que el riesgo está vinculado a estructuras económicas, políticas y regulatorias.
-      </div>
-      <h3>¿Ha cambiado el riesgo AML con el tiempo?</h3>
+    <div class="takeaway">
+      <strong>Lectura:</strong>
+      las diferencias regionales sugieren que el riesgo está vinculado a estructuras económicas, políticas y regulatorias.
+    </div>
 
-      <p>
+    <h3>¿Ha cambiado el riesgo AML con el tiempo?</h3>
+
+    <p>
       Aunque el análisis principal se centra en 2018, la evolución temporal permite comprobar si los patrones regionales observados se mantienen a lo largo de los años.
-      </p>
-      
-      <iframe src="graficas/07_evolucion.html"></iframe>
-      
-      <div class="takeaway">
+    </p>
+
+    <iframe src="graficas/07_evolucion.html"></iframe>
+
+    <div class="takeaway">
       <strong>Lectura:</strong>
       las diferencias regionales permanecen relativamente estables durante el periodo analizado, lo que sugiere que no se trata de fenómenos coyunturales.
-      </div>
     </div>
-    
-  </section>
+  </div>
+</section>
 
-  <section id="economia">
-    <span class="chapter-label">Capítulo 2</span>
-    <h2>Hipótesis económica: ¿la riqueza reduce el riesgo?</h2>
+<section id="economia">
+  <span class="chapter-label">Capítulo 2</span>
+  <h2>Hipótesis económica: ¿la riqueza reduce el riesgo?</h2>
 
-    <div class="card">
-      <p>
-        Una posible explicación es que los países con mayor riqueza dispongan de sistemas financieros más desarrollados
-        y mejores capacidades de supervisión. Para comprobarlo se compara el PIB per cápita con el AML Score.
-      </p>
+  <div class="card">
+    <p>
+      Una posible explicación es que los países con mayor riqueza dispongan de sistemas financieros más desarrollados
+      y mejores capacidades de supervisión. Para comprobarlo se compara el PIB per cápita con el AML Score.
+    </p>
 
-      <iframe src="graficas/03_gdp_vs_aml.html"></iframe>
+    <iframe src="graficas/03_gdp_vs_aml.html"></iframe>
 
-      <div class="takeaway">
-        <strong>Lectura:</strong>
-        existe una relación negativa: a mayor PIB per cápita, menor riesgo AML en promedio.
-        Sin embargo, la dispersión indica que la riqueza no explica todo.
-      </div>
-
-      <p>
-        La comparación por grupos de ingresos permite comprobar si la hipótesis económica se mantiene al agrupar países
-        según su nivel de renta.
-      </p>
-
-      <iframe src="graficas/05_income.html"></iframe>
-
-      <div class="claim">
-        La renta importa, pero no basta: países con niveles económicos similares pueden presentar riesgos AML distintos.
-      </div>
+    <div class="takeaway">
+      <strong>Lectura:</strong>
+      existe una relación negativa: a mayor PIB per cápita, menor riesgo AML en promedio.
+      Sin embargo, la dispersión indica que la riqueza no explica todo.
     </div>
-  </section>
 
-  <section id="instituciones">
-    <span class="chapter-label">Capítulo 3</span>
-    <h2>Hipótesis institucional: ¿la corrupción explica mejor el riesgo?</h2>
+    <p>
+      La comparación por grupos de ingresos permite comprobar si la hipótesis económica se mantiene al agrupar países
+      según su nivel de renta.
+    </p>
 
-    <div class="card">
-      <p>
-        La segunda hipótesis plantea que el riesgo de blanqueo está más relacionado con la fortaleza institucional que
-        con la riqueza. Para contrastarlo se utiliza el CPI Score, donde valores más altos indican menor corrupción percibida.
-      </p>
+    <iframe src="graficas/05_income.html"></iframe>
 
-      <iframe src="graficas/10_corrupcion_vs_aml.html"></iframe>
+    <div class="claim">
+      La renta importa, pero no basta: países con niveles económicos similares pueden presentar riesgos AML distintos.
+    </div>
+  </div>
+</section>
 
-      <div class="takeaway">
-        <strong>Lectura:</strong>
-        la relación es más clara: los países con menor corrupción percibida tienden a presentar menor riesgo AML.
-      </div>
+<section id="instituciones">
+  <span class="chapter-label">Capítulo 3</span>
+  <h2>Hipótesis institucional: ¿la corrupción explica mejor el riesgo?</h2>
 
-      <div class="claim">
-        Esta visualización es el núcleo del proyecto: sugiere que el riesgo AML no es solo un problema económico,
-        sino también institucional.
-      </div>
-      <h3>Distribución conjunta de corrupción y riesgo AML</h3>
+  <div class="card">
+    <p>
+      La segunda hipótesis plantea que el riesgo de blanqueo está más relacionado con la fortaleza institucional que
+      con la riqueza. Para contrastarlo se utiliza el CPI Score, donde valores más altos indican menor corrupción percibida.
+    </p>
 
-      <p>
+    <iframe src="graficas/10_corrupcion_vs_aml.html"></iframe>
+
+    <div class="takeaway">
+      <strong>Lectura:</strong>
+      la relación es más clara: los países con menor corrupción percibida tienden a presentar menor riesgo AML.
+    </div>
+
+    <div class="claim">
+      Esta visualización es el núcleo del proyecto: sugiere que el riesgo AML no es solo un problema económico,
+      sino también institucional.
+    </div>
+
+    <h3>Distribución conjunta de corrupción y riesgo AML</h3>
+
+    <p>
       Esta visualización complementa el análisis anterior mostrando cómo se distribuyen los países según sus niveles de corrupción percibida y riesgo AML.
-      </p>
-      
-      <iframe src="graficas/04_corrupcion.html"></iframe>
-      
-      <div class="takeaway">
+    </p>
+
+    <iframe src="graficas/04_corrupcion.html"></iframe>
+
+    <div class="takeaway">
       <strong>Lectura:</strong>
       los países con menor corrupción percibida tienden a concentrarse en zonas de menor riesgo AML, reforzando la hipótesis institucional.
+    </div>
+  </div>
+</section>
+
+<section id="contexto">
+  <span class="chapter-label">Capítulo 4</span>
+  <h2>El contexto regional y la digitalización completan la historia</h2>
+
+  <div class="card">
+    <p>
+      La distribución regional muestra que el contexto geográfico no solo afecta a la media, sino también a la dispersión
+      del riesgo y a la presencia de valores extremos.
+    </p>
+
+    <iframe src="graficas/06_region.html"></iframe>
+
+    <div class="takeaway">
+      <strong>Lectura:</strong>
+      algunas regiones no solo tienen mayor riesgo medio, sino también mayor variabilidad interna.
+    </div>
+
+    <p>
+      La digitalización se incorpora como factor complementario. Permite observar si el acceso a Internet, como proxy
+      de modernización, se asocia con menor riesgo AML.
+    </p>
+
+    <iframe src="graficas/08_internet_vs_aml.html"></iframe>
+
+    <div class="takeaway">
+      <strong>Lectura:</strong>
+      la digitalización puede estar relacionada con el desarrollo económico, pero no sustituye a los factores institucionales.
+    </div>
+  </div>
+</section>
+
+<section id="sintesis">
+  <span class="chapter-label">Capítulo 5</span>
+  <h2>Síntesis: qué factores sostienen mejor la narrativa</h2>
+
+  <div class="card">
+    <p>
+      Tras explorar las hipótesis principales, esta visualización compara la fuerza de asociación entre AML Score
+      y las variables disponibles.
+    </p>
+
+    <iframe src="graficas/09_factores_asociados_aml.html"></iframe>
+
+    <div class="takeaway">
+      <strong>Lectura:</strong>
+      la corrupción y el desarrollo económico aparecen como las asociaciones más relevantes dentro del conjunto analizado.
+    </div>
+
+    <p>
+      La matriz de correlaciones ofrece una visión conjunta y permite comprobar si las relaciones observadas en los gráficos
+      se mantienen al comparar todas las variables simultáneamente.
+    </p>
+
+    <iframe src="graficas/08_correlaciones.html"></iframe>
+
+    <p>
+      Finalmente, el PCA y K-Means exploran si los países se agrupan en perfiles diferenciados de riesgo, economía
+      e instituciones.
+    </p>
+
+    <iframe src="graficas/11_pca_kmeans_perfiles.html"></iframe>
+
+    <p>
+      La tabla siguiente resume el perfil medio de cada grupo identificado.
+    </p>
+
+    <iframe class="small-frame" src="graficas/12_perfil_clusters.html"></iframe>
+
+    <div class="claim">
+      El análisis multivariante refuerza la idea de que el riesgo AML es multidimensional:
+      combina economía, instituciones y contexto regional.
+    </div>
+  </div>
+</section>
+
+<section id="respuesta">
+  <h2>¿Hemos respondido la pregunta inicial?</h2>
+
+  <div class="card">
+    <p>
+      La pregunta que motivó este proyecto fue la siguiente:
+    </p>
+
+    <div class="claim">
+      <strong>¿Qué factores parecen explicar las diferencias internacionales en riesgo de blanqueo de capitales?</strong>
+    </div>
+
+    <p>
+      Tras analizar el fenómeno desde perspectivas geográficas, económicas e institucionales, es posible sintetizar los principales hallazgos obtenidos.
+    </p>
+
+    <h3>Resumen visual de hallazgos</h3>
+
+    <div class="final-summary-grid">
+      <div class="final-summary-box">
+        <h4>🌍 Geografía</h4>
+        <p>El riesgo AML presenta una distribución desigual y se concentra en determinadas regiones.</p>
+      </div>
+
+      <div class="final-summary-box">
+        <h4>💰 Economía</h4>
+        <p>Los países con mayor PIB per cápita suelen presentar menor riesgo AML.</p>
+      </div>
+
+      <div class="final-summary-box">
+        <h4>🏛 Instituciones</h4>
+        <p>La corrupción percibida muestra la asociación más fuerte y consistente con el riesgo AML.</p>
+      </div>
+
+      <div class="final-summary-box">
+        <h4>📊 Perfiles</h4>
+        <p>Los análisis multivariantes identifican grupos diferenciados de países.</p>
       </div>
     </div>
-  </section>
 
-  <section id="contexto">
-    <span class="chapter-label">Capítulo 4</span>
-    <h2>El contexto regional y la digitalización completan la historia</h2>
+    <h3>Síntesis de la evidencia</h3>
 
-    <div class="card">
-      <p>
-        La distribución regional muestra que el contexto geográfico no solo afecta a la media, sino también a la dispersión
-        del riesgo y a la presencia de valores extremos.
-      </p>
+    <table class="summary-table">
+      <tr>
+        <th>Pregunta</th>
+        <th>Evidencia utilizada</th>
+        <th>Conclusión</th>
+      </tr>
 
-      <iframe src="graficas/06_region.html"></iframe>
+      <tr>
+        <td>¿Dónde se concentra el riesgo AML?</td>
+        <td>Mapa mundial, Top 20, ranking regional y evolución temporal.</td>
+        <td>El riesgo AML no se distribuye de forma homogénea y presenta patrones regionales estables.</td>
+      </tr>
 
-      <div class="takeaway">
-        <strong>Lectura:</strong>
-        algunas regiones no solo tienen mayor riesgo medio, sino también mayor variabilidad interna.
-      </div>
+      <tr>
+        <td>¿La riqueza reduce el riesgo AML?</td>
+        <td>PIB per cápita vs AML y grupos de ingresos.</td>
+        <td>Existe una relación negativa moderada: la riqueza reduce parte del riesgo, pero no lo explica por completo.</td>
+      </tr>
 
-      <p>
-        La digitalización se incorpora como factor complementario. Permite observar si el acceso a Internet, como proxy
-        de modernización, se asocia con menor riesgo AML.
-      </p>
+      <tr>
+        <td>¿La corrupción explica mejor el fenómeno?</td>
+        <td>CPI Score vs AML y matriz de correlaciones.</td>
+        <td>La asociación observada es más fuerte y consistente que la relación con variables económicas.</td>
+      </tr>
 
-      <iframe src="graficas/08_internet_vs_aml.html"></iframe>
+      <tr>
+        <td>¿Importa la región?</td>
+        <td>Distribución regional y ranking regional.</td>
+        <td>Las diferencias geográficas sugieren la existencia de factores estructurales compartidos.</td>
+      </tr>
 
-      <div class="takeaway">
-        <strong>Lectura:</strong>
-        la digitalización puede estar relacionada con el desarrollo económico, pero no sustituye a los factores institucionales.
-      </div>
+      <tr>
+        <td>¿Existen perfiles diferenciados?</td>
+        <td>PCA, K-Means y perfil de clusters.</td>
+        <td>Los países pueden agruparse en perfiles distintos de riesgo, economía e institucionalidad.</td>
+      </tr>
+    </table>
+
+    <div class="claim">
+      <strong>Respuesta final</strong><br><br>
+      La evidencia visual obtenida sugiere que el riesgo de blanqueo de capitales no depende exclusivamente del nivel de riqueza de un país.
+      <br><br>
+      Aunque el desarrollo económico se asocia con menores niveles de riesgo AML, la relación observada con la corrupción percibida resulta más intensa y consistente.
+      <br><br>
+      En consecuencia, la calidad institucional aparece como el factor más relevante dentro de las variables analizadas para comprender las diferencias internacionales en vulnerabilidad frente al blanqueo de capitales.
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="sintesis">
-    <span class="chapter-label">Capítulo 5</span>
-    <h2>Síntesis: qué factores sostienen mejor la narrativa</h2>
+<section id="limitaciones">
+  <h2>Limitaciones y decisiones de diseño</h2>
 
-    <div class="card">
-      <p>
-        Tras explorar las hipótesis principales, esta visualización compara la fuerza de asociación entre AML Score
-        y las variables disponibles.
-      </p>
+  <div class="card">
+    <p>
+      Este trabajo debe interpretarse como una exploración visual y no como una demostración causal. Las correlaciones observadas permiten identificar asociaciones entre variables, pero no establecen relaciones de causa y efecto.
+    </p>
 
-      <iframe src="graficas/09_factores_asociados_aml.html"></iframe>
+    <p>
+      La selección de 2018 responde a la disponibilidad de datos económicos comparables. Algunas variables potencialmente relevantes no pudieron incorporarse debido a la presencia de valores faltantes.
+    </p>
 
-      <div class="takeaway">
-        <strong>Lectura:</strong>
-        la corrupción y el desarrollo económico aparecen como las asociaciones más relevantes dentro del conjunto analizado.
-      </div>
+    <p>
+      Desde el punto de vista de la visualización, se priorizaron gráficos interactivos que permiten explorar los datos mediante zoom, filtros y ventanas emergentes. También se utilizaron escalas de color consistentes para facilitar la interpretación del riesgo AML a lo largo de toda la narrativa.
+    </p>
+  </div>
+</section>
 
-      <p>
-        La matriz de correlaciones ofrece una visión conjunta y permite comprobar si las relaciones observadas en los gráficos
-        se mantienen al comparar todas las variables simultáneamente.
-      </p>
+<section id="conclusiones">
+  <h2>Conclusiones finales</h2>
 
-      <iframe src="graficas/08_correlaciones.html"></iframe>
+  <div class="card">
+    <p>
+      La historia visual muestra que el riesgo de blanqueo de capitales no se distribuye de forma aleatoria.
+      Existen patrones geográficos y diferencias claras entre países y regiones.
+    </p>
 
-      <p>
-        Finalmente, el PCA y K-Means exploran si los países se agrupan en perfiles diferenciados de riesgo, economía
-        e instituciones.
-      </p>
+    <p>
+      La hipótesis económica se cumple parcialmente: los países más ricos tienden a presentar menor riesgo AML.
+      Sin embargo, la dispersión observada indica que el desarrollo económico no basta para explicar el fenómeno.
+    </p>
 
-      <iframe src="graficas/09_clusters.html"></iframe>
+    <p>
+      La hipótesis institucional ofrece una explicación más sólida: los países con menor corrupción percibida presentan,
+      en general, menores niveles de riesgo AML. Por ello, la calidad institucional aparece como un eje central del análisis.
+    </p>
 
-      <p>
-        La tabla siguiente resume el perfil medio de cada grupo identificado.
-      </p>
-
-      <iframe src="graficas/13_clusters.html"></iframe>
-
-      <div class="claim">
-        El análisis multivariante refuerza la idea de que el riesgo AML es multidimensional:
-        combina economía, instituciones y contexto regional.
-      </div>
+    <div class="claim">
+      <strong>Mensaje final:</strong><br>
+      La prevención del blanqueo de capitales no es únicamente un problema financiero; es también un problema
+      institucional, regulatorio y de gobernanza.
     </div>
-  </section>
-
-  <section id="conclusiones">
-    <h2>Conclusiones finales</h2>
-
-    <div class="card">
-      <p>
-        La historia visual muestra que el riesgo de blanqueo de capitales no se distribuye de forma aleatoria.
-        Existen patrones geográficos y diferencias claras entre países y regiones.
-      </p>
-
-      <p>
-        La hipótesis económica se cumple parcialmente: los países más ricos tienden a presentar menor riesgo AML.
-        Sin embargo, la dispersión observada indica que el desarrollo económico no basta para explicar el fenómeno.
-      </p>
-
-      <p>
-        La hipótesis institucional ofrece una explicación más sólida: los países con menor corrupción percibida presentan,
-        en general, menores niveles de riesgo AML. Por ello, la calidad institucional aparece como un eje central del análisis.
-      </p>
-
-      <div class="claim">
-        <strong>Mensaje final:</strong><br>
-        La prevención del blanqueo de capitales no es únicamente un problema financiero; es también un problema
-        institucional, regulatorio y de gobernanza.
-      </div>
-
-      <p>
-        Como limitación, el análisis debe interpretarse de forma exploratoria: las correlaciones no implican causalidad,
-        y algunas variables presentan restricciones de disponibilidad. Aun así, la visualización permite construir una
-        lectura coherente y fundamentada sobre los factores asociados al riesgo AML.
-      </p>
-    </div>
-  </section>
+  </div>
+</section>
 
 </main>
 
