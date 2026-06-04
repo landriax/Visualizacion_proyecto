@@ -201,7 +201,7 @@
 
     iframe {
       width: 100%;
-      height: 720px;
+      height: 900px;
       border: 1px solid var(--border);
       border-radius: 13px;
       background: white;
@@ -211,7 +211,7 @@
     }
 
     .small-frame {
-      height: 540px;
+      height: 700px;
     }
 
     .chapter-label {
@@ -360,7 +360,6 @@
       </div>
     </div>
 
-    <iframe class="small-frame" src="graficas/00_resumen_ejecutivo.html"></iframe>
   </section>
 
   <section id="datos">
@@ -442,7 +441,20 @@
         <strong>Lectura:</strong>
         las diferencias regionales sugieren que el riesgo está vinculado a estructuras económicas, políticas y regulatorias.
       </div>
+      <h3>¿Ha cambiado el riesgo AML con el tiempo?</h3>
+
+      <p>
+      Aunque el análisis principal se centra en 2018, la evolución temporal permite comprobar si los patrones regionales observados se mantienen a lo largo de los años.
+      </p>
+      
+      <iframe src="graficas/07_evolucion.html"></iframe>
+      
+      <div class="takeaway">
+      <strong>Lectura:</strong>
+      las diferencias regionales permanecen relativamente estables durante el periodo analizado, lo que sugiere que no se trata de fenómenos coyunturales.
+      </div>
     </div>
+    
   </section>
 
   <section id="economia">
@@ -496,6 +508,18 @@
       <div class="claim">
         Esta visualización es el núcleo del proyecto: sugiere que el riesgo AML no es solo un problema económico,
         sino también institucional.
+      </div>
+      <h3>Distribución conjunta de corrupción y riesgo AML</h3>
+
+      <p>
+      Esta visualización complementa el análisis anterior mostrando cómo se distribuyen los países según sus niveles de corrupción percibida y riesgo AML.
+      </p>
+      
+      <iframe src="graficas/04_corrupcion.html"></iframe>
+      
+      <div class="takeaway">
+      <strong>Lectura:</strong>
+      los países con menor corrupción percibida tienden a concentrarse en zonas de menor riesgo AML, reforzando la hipótesis institucional.
       </div>
     </div>
   </section>
@@ -560,13 +584,13 @@
         e instituciones.
       </p>
 
-      <iframe src="graficas/11_pca_kmeans_perfiles.html"></iframe>
+      <iframe src="graficas/09_clusters.html"></iframe>
 
       <p>
         La tabla siguiente resume el perfil medio de cada grupo identificado.
       </p>
 
-      <iframe class="small-frame" src="graficas/12_perfil_clusters.html"></iframe>
+      <iframe src="graficas/13_clusters.html"></iframe>
 
       <div class="claim">
         El análisis multivariante refuerza la idea de que el riesgo AML es multidimensional:
