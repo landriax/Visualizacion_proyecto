@@ -537,27 +537,32 @@
 
   <div class="card">
     <p>
-      Una posible explicación es que los países con mayor riqueza dispongan de sistemas financieros más desarrollados
-      y mejores capacidades de supervisión. Para comprobarlo se compara el PIB per cápita con el AML Score.
+      Hemos introducido la idea previamente de que la ausencia de un sistema sociopolítico robusto se relaciona con la imposición de medidas de prevención del blanqueo de capitales deficientes.
+      Una posible explicación es que los países con mayor riqueza dispongan de sistemas financieros más desarrollados y mejores capacidades de supervisión. Pero, ¿está relacionado esto con los datos obtenidos?
+      Para comprobarlo se compara el PIB per cápita con el AML Score.
     </p>
 
     <iframe src="graficas/03_gdp_vs_aml.html"></iframe>
 
     <div class="takeaway">
       <strong>Lectura:</strong>
-      existe una relación negativa: a mayor PIB per cápita, menor riesgo AML en promedio.
+      Se identifica una correlación negativa muy tangible: a mayor PIB per cápita, menor riesgo AML en promedio.
       Sin embargo, la dispersión indica que la riqueza no explica todo.
     </div>
 
     <p>
       La comparación por grupos de ingresos permite comprobar si la hipótesis económica se mantiene al agrupar países
-      según su nivel de renta.
+      según su nivel de renta. Vemos una tendencia clara en cada una de las cohortes, pero pareciera que hay parámetros más representativos a la hora de determinar el riesgo.
     </p>
 
     <iframe src="graficas/05_income.html"></iframe>
 
     <div class="claim">
-      La renta importa, pero no basta: países con niveles económicos similares pueden presentar riesgos AML distintos.
+      La renta importa, pero no basta: países con niveles económicos similares pueden presentar riesgos AML distintos. 
+      Pareciera en esa dinámica, que se refuerza la idea de dos tipos de países que disponen de medidas deficientes:
+      * Aquellos que carecen de los recursos para disponer de las medidas necesarias.
+      * Aquellos que tienen incentivos socioeconómicos para omitir las medidas requeridas por el marco internacional.
+      Recuperaremos esta idea hacia el final del estudio.
     </div>
   </div>
 </section>
@@ -570,6 +575,7 @@
     <p>
       La segunda hipótesis plantea que el riesgo de blanqueo está más relacionado con la fortaleza institucional que
       con la riqueza. Para contrastarlo se utiliza el CPI Score, donde valores más altos indican menor corrupción percibida.
+      Este indicador está profundamente ligado al factor económico, pero pareciera arrojar una serie de tendencias clave:
     </p>
 
     <iframe src="graficas/10_corrupcion_vs_aml.html"></iframe>
@@ -577,11 +583,16 @@
     <div class="takeaway">
       <strong>Lectura:</strong>
       la relación es más clara: los países con menor corrupción percibida tienden a presentar menor riesgo AML.
+      No pareciera existir grandes outliers en la gráfica y los países situados más apartados de la tendencia general parecen ser testigo de fenómenos claros a nivel mundial.
+      
+      Abajo a la izquierda, como país averso al blanqueo de capitales sin tanta preocupación sobre los índices de corrupción emerge Andorra, muy afectado tras la quiebra de uno de sus mayores bancos (la BPA) debido a un boicot estadounidense. También hay países de los Balcanes, para los que la pertenencia o cercanía a la UE les hace disponer de controles férreos de prevención, pero la corrupción institucional no se ha visto mitigada de la misma forma.
+      
+      Arriba a la derecha, como país con un sistema institucional robusto pero medidas laxas de prevención del blanqueo emergen potencias caribeñas como las Islas Caimán, Bahamas o Barbados. También surgen países del golfo como los Emiratos Árabes Unidos y Qatar o países emergentes de África como Senegal y Cabo Verde. Todos ellos aúnan un interés claro en recibir inversión extranjera, y quizá la imposición de un sistema más laxo pueda ser un incentivo para los inversores.
     </div>
 
     <div class="claim">
-      Esta visualización es el núcleo del proyecto: sugiere que el riesgo AML no es solo un problema económico,
-      sino también institucional.
+      Esta visualización es hasta este punto, el núcleo del proyecto: se contempla que el riesgo AML no es solo un problema económico,
+      sino más bien institucional. 
     </div>
 
     <h3>Distribución conjunta de corrupción y riesgo AML</h3>
@@ -605,8 +616,8 @@
 
   <div class="card">
     <p>
-      La distribución regional muestra que el contexto geográfico no solo afecta a la media, sino también a la dispersión
-      del riesgo y a la presencia de valores extremos.
+      Hemos introducido regiones de países en el marco internacional, atisbando ciertas tendencias subyacentes ya sea a nivel económico o político.
+      La distribución regional muestra que el contexto geográfico no solo afecta a la media, sino también a la dispersión del riesgo y a la presencia de valores extremos. 
     </p>
 
     <iframe src="graficas/06_region.html"></iframe>
@@ -614,11 +625,14 @@
     <div class="takeaway">
       <strong>Lectura:</strong>
       algunas regiones no solo tienen mayor riesgo medio, sino también mayor variabilidad interna.
+      Esto se relaciona con las ideas anteriores, y supone lo que ya hemos explorado hasta ahora, que no existe un único perfil de país con una legislación no cooperante en materias de prevención de blanqueo.
+      Puede ser que se relacione al secreto bancario, y sea un síntoma de la predisposición del país a imponer medidas laxas de cara al fraude fiscal o como ya hemos adelantado, la consecuencia de una imposibilidad institucional de prevenir este fenómeno.
     </div>
 
     <p>
       La digitalización se incorpora como factor complementario. Permite observar si el acceso a Internet, como proxy
-      de modernización, se asocia con menor riesgo AML.
+      de modernización, se asocia con menor riesgo AML. 
+      Este medidor se liga a otros similares como el HDI, para ver si de verdad son los países en vías de desarrollo los drivers de este tipo de fenómenos.
     </p>
 
     <iframe src="graficas/14_internet_vs_aml.html"></iframe>
@@ -626,6 +640,8 @@
     <div class="takeaway">
       <strong>Lectura:</strong>
       la digitalización puede estar relacionada con el desarrollo económico, pero no sustituye a los factores institucionales.
+      Este resultado es muy relevante dado que aunque se evidencia que hay países con legislaciones débiles entre la cohorte de los países más pobres, parece ser un problema transversal a todos los niveles de desarrollo.
+      Los países más desarrollados tienen tendencia a seguir una legislación más robusta, pero un país que incumpla las medidas básicas no tiene por que pertenecer al llamado "Sur Global".
     </div>
   </div>
 </section>
